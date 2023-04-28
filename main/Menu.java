@@ -7,7 +7,7 @@ public class Menu {
 
     }
 
-    public void printaMenu(){
+    public static void printaMenu(){
 
         System.out.println("Olá usuário, o que gostaria de fazer ?");
         System.out.println("=============opções=============");
