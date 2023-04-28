@@ -1,13 +1,12 @@
 package main;
 public class Menu {
 
-    private int escolha;
 
     public Menu(){
 
     }
 
-    public static void printaMenu(){
+    public void printaMenu(){
 
         System.out.println("Olá usuário, o que gostaria de fazer ?");
         System.out.println("=============opções=============");
@@ -19,9 +18,6 @@ public class Menu {
         System.out.println("================================");
         System.out.println("digite sua escolha: ");
 
+        
     }
-
-
-
-
 }
