@@ -15,7 +15,7 @@ public class App{
       
       switch(escolha) {
         case 0:
-          System.out.println("Fim do Programa !");
+          System.out.println("Tchau até a próxima !");
           break;
         case 1:
         System.out.println("opção 1");
