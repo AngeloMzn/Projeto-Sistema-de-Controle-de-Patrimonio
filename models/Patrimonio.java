@@ -1,3 +1,4 @@
+package models;
 public class Patrimonio{
   
   private int nPatrimonio; // numero gerado com random util java

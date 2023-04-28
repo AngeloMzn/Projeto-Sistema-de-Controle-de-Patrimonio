@@ -1,8 +1,9 @@
+package main;
 public class Menu{
 
   
   public void listaMenu(){
-    sysou
+    system.out.println()
    
   
   }
