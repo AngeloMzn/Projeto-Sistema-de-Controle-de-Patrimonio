@@ -7,3 +7,4 @@ Trabalho da matéria linguagem de programação orientada a objetos da faculdade
 
 -passar numero de patrimonio como parametro para classe patrimonio (gerar o random na main e validar se ja existe um patrimonio com esse numero)
 
+- usar no contrutor de classes filhas super(nPatrimonio, tpPatrimonio, estado), ou seja, puxar da classe pai essas informações sem prejudicar a compilação.
