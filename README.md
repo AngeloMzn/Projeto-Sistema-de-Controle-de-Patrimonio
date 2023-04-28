@@ -4,3 +4,6 @@ Trabalho da matéria linguagem de programação orientada a objetos da faculdade
 -lembrar de usar o random para gerar numero de patrimonio
 
 -fazer metodos para movimentação interna(entre delegacias de patrimonio)
+
+-passar numero de patrimonio como parametro para classe patrimonio (gerar o random na main e validar se ja existe um patrimonio com esse numero)
+
