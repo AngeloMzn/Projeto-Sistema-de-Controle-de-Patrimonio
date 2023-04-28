@@ -5,7 +5,7 @@ public class Patrimonio{
   private String estadoPatrimonio; //(novo, velho, com defeito)
 
   // metodo para validar se existe um patrimonio com o numero gerado pelo random na main
-  public boolean existePatrimonio(){
+  public boolean existePatrimonio(int random){
     
     
     
