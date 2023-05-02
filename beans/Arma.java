@@ -5,7 +5,7 @@ public class Arma extends Patrimonio{
     private String modeloArma; //(glock 16, aks, ak47, parafal)
     private double calibre; // calibre de munição usado
 
-    public Arma(String estadoPatrimonio, String marca, String local, int nSerie, String modeloArma, double calibre){
+    public Arma(int nSerie, String modeloArma, double calibre){
 
         this.nSerie = nSerie;
         this.modeloArma = modeloArma;
@@ -14,4 +14,16 @@ public class Arma extends Patrimonio{
 
     }
 
+    public double getCalibre() {
+        return calibre;
+    }
+   
+    public String getModeloArma() {
+        return modeloArma;
+    }
+   
+    public int getnSerie() {
+        return nSerie;
+    }
+    
 }

@@ -2,9 +2,14 @@ package main;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
+import beans.Arma;
+import beans.Colete;
+import beans.Material;
+import beans.Veiculo;
+
 public class Arquivo {
     
-    public void cadastraArma(){
+    public void cadastraArma(Arma arma){
 
         try{
 
@@ -26,7 +31,7 @@ public class Arquivo {
     }
 
 
-    public void cadastraEletronico(){
+    public void cadastraMaterial(Material material){
 
         try{
 
@@ -47,16 +52,16 @@ public class Arquivo {
 
 
     }
-    
-    public void cadastraMovel(){
+
+    public void cadastraVeiculo(Veiculo veiculo){
 
         try{
 
-            FileOutputStream arq = new FileOutputStream("movel.txt");
+            FileOutputStream arq = new FileOutputStream("veiculo.txt");
             PrintWriter pr = new PrintWriter(arq);
 
             pr.println("Número de patrimonio: " + "Estado do patrimonio: " + "Local do patrimonio: ");
-        
+            
             pr.close();
             arq.close();
 
@@ -69,8 +74,7 @@ public class Arquivo {
 
 
     }
-
-    public void cadastraVeiculo(){
+    public void cadastraColete(Colete colete){
 
         try{
 
