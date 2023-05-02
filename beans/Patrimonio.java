@@ -6,7 +6,7 @@ public class Patrimonio{
   private String marca;
   private String local; //local onde o patrimonio esta 
   
-  // metodo para validar se existe um patrimonio com o numero gerado pelo random na main
+  // criar metodo para validar se existe um patrimonio com o numero gerado pelo random na main
 
 
   

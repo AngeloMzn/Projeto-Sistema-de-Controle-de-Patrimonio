@@ -1,9 +1,5 @@
 package main;
 
-import java.util.Scanner;
-
-import beans.Arma;
-
 public class Menu {
 
 
@@ -31,8 +27,8 @@ public class Menu {
         System.out.println("Escolha aqui qual tipo de patrimonio voce deseja");
         System.out.println("=============opções=============");
         System.out.println("1 - Arma");
-        System.out.println("2 - Eletronico");
-        System.out.println("3 - Movel");
+        System.out.println("2 - Material");
+        System.out.println("3 - Colete");
         System.out.println("4 - Veiculo");
         System.out.println("================================");
         System.out.println("digite sua escolha: ");
