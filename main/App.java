@@ -7,8 +7,8 @@ public class App{
     
     Menu m = new Menu();
     Scanner r = new Scanner(System.in);
-    Hook h = new Hook();
     int escolha, tpPatrimonio;
+    Arquivo arq = new Arquivo();
 
     do {
       
@@ -27,10 +27,12 @@ public class App{
             System.out.println();
             System.out.println("Vamos cadastrar o patrimonio então !");
             System.out.println("escolha tipo de patrimonio vai escolher");
+            System.out.println();
             
             m.menuTpPatrimonio();
             tpPatrimonio = r.nextInt();
-            
+
+            arq.salvaPatrimonio(tpPatrimonio);
             
 
             break;
@@ -38,33 +40,36 @@ public class App{
             case 2:
             
             System.out.println();  
-            System.out.println("opção 2");
+            System.out.println("Vamos movimentar um patrimonio então !");
             System.out.println();
            
             m.menuTpPatrimonio();
             tpPatrimonio = r.nextInt();
+
 
             break;
     
             case 3:
         
             System.out.println();
-            System.out.println("opção 3");
+            System.out.println("Vamos remover um patriomonio então !");
             System.out.println();
             
             m.menuTpPatrimonio();
             tpPatrimonio = r.nextInt();
 
+            
             break;
     
             case 4:
         
             System.out.println();  
-            System.out.println("opção 4");
+            System.out.println("Vamos editar um patrimonio então !");
             System.out.println();
             
             m.menuTpPatrimonio();
             tpPatrimonio = r.nextInt();
+
 
             break;
     

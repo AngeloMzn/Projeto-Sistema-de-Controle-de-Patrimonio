@@ -12,14 +12,19 @@ public class Arquivo {
     public void cadastraArma(Arma arma){
 
         try{
+            //verifica de o objeto foi construido 
+            if(arma.getnPatrimonio() != 0){
+                
+                FileOutputStream arq = new FileOutputStream("arma.txt");
+                PrintWriter pr = new PrintWriter(arq);
 
-            FileOutputStream arq = new FileOutputStream("arma.txt");
-            PrintWriter pr = new PrintWriter(arq);
-
-            pr.println("Número de patrimonio: " + "Estado do patrimonio: " + "Local do patrimonio: ");
-       
-            pr.close();
-            arq.close();
+                
+                pr.println("Numero de patrimonio: " + arma.getnPatrimonio()+";" + " Estado do patrimonio: " +arma.getEstadoPatrimonio() + ";"+ " Local do patrimonio: " + arma.getLocal() + ";" + " Marca: " + arma.getMarca()+ ";" + " Numero de série: " + arma.getnSerie() + ";" + " Modelo: " + arma.getModeloArma() + ";" + " Calibre: " + arma.getCalibre()+";");
+                System.out.println("Arma cadastrada com sucesso !");
+                pr.close();
+                arq.close();
+                
+            }
         }
         catch(Exception e){
 
@@ -34,15 +39,15 @@ public class Arquivo {
     public void cadastraMaterial(Material material){
 
         try{
+            if(material.getnPatrimonio() != 0){
+                FileOutputStream arq = new FileOutputStream("eletronico.txt");
+                PrintWriter pr = new PrintWriter(arq);
 
-            FileOutputStream arq = new FileOutputStream("eletronico.txt");
-            PrintWriter pr = new PrintWriter(arq);
-
-            pr.println("Número de patrimonio: " + "Estado do patrimonio: " + "Local do patrimonio: ");
-        
-            pr.close();
-            arq.close();
-
+                pr.println("Número de patrimonio: " + material.getnPatrimonio() + "Estado do patrimonio: " + material.getEstadoPatrimonio() + "Local do patrimonio: " + material.getLocal());
+                System.out.println("Material cadastrado com sucesso !");
+                pr.close();
+                arq.close();
+            }
         }
         catch(Exception e){
 
@@ -56,15 +61,16 @@ public class Arquivo {
     public void cadastraVeiculo(Veiculo veiculo){
 
         try{
+            if(veiculo.getnPatrimonio() != 0){
+                FileOutputStream arq = new FileOutputStream("veiculo.txt");
+                PrintWriter pr = new PrintWriter(arq);
 
-            FileOutputStream arq = new FileOutputStream("veiculo.txt");
-            PrintWriter pr = new PrintWriter(arq);
+                pr.println("Número de patrimonio: " + veiculo.getnPatrimonio() + "Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + "Local do patrimonio: " + veiculo.getLocal());
+                System.out.println("Veiculo cadastrado com sucesso !");
 
-            pr.println("Número de patrimonio: " + "Estado do patrimonio: " + "Local do patrimonio: ");
-            
-            pr.close();
-            arq.close();
-
+                pr.close();
+                arq.close();
+            }
         }
         catch(Exception e){
 
@@ -77,20 +83,49 @@ public class Arquivo {
     public void cadastraColete(Colete colete){
 
         try{
+            if(colete.getnPatrimonio() != 0){
+                FileOutputStream arq = new FileOutputStream("colete.txt");
+                PrintWriter pr = new PrintWriter(arq);
 
-            FileOutputStream arq = new FileOutputStream("veiculo.txt");
-            PrintWriter pr = new PrintWriter(arq);
+                pr.println("Número de patrimonio: " + colete.getnPatrimonio() + "Estado do patrimonio: " + colete.getEstadoPatrimonio() + "Local do patrimonio: " + colete.getLocal());
+                System.out.println("Colete cadastrado com sucesso !");
 
-            pr.println("Número de patrimonio: " + "Estado do patrimonio: " + "Local do patrimonio: ");
-            
-            pr.close();
-            arq.close();
-
+                pr.close();
+                arq.close();
+            }
         }
         catch(Exception e){
 
             System.out.println("Erro ao cadastrar o partimonio");
 
+        }
+
+
+    }
+    public void salvaPatrimonio(int tpPatrimonio){
+        
+        Hook h = new Hook();
+        
+        switch(tpPatrimonio){
+
+            case 1:
+            cadastraArma(h.arma());
+            break;
+
+            case 2:
+            cadastraMaterial(h.material());
+            break;
+
+            case 3:
+            cadastraColete(h.colete());
+            break;
+
+            case 4:
+            cadastraVeiculo(h.veiculo());
+            break;
+            default:
+            System.out.println("Você não escolheu nenhuma das opções !! escolha entre 1 a 4");
+            System.out.println();
         }
 
 
