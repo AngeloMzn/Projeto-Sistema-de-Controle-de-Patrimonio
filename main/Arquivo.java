@@ -43,7 +43,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("eletronico.txt");
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Número de patrimonio: " + material.getnPatrimonio() + "Estado do patrimonio: " + material.getEstadoPatrimonio() + "Local do patrimonio: " + material.getLocal());
+                pr.println("Número de patrimonio: " + material.getnPatrimonio() + ";" + "Estado do patrimonio: " + material.getEstadoPatrimonio() + ";" + "Local do patrimonio: " + material.getLocal() + ";" + " Descrição do material: " + material.getDescricaoMaterial() + ";" + " Porte do material: " + material.getPorte() + ";");
                 System.out.println("Material cadastrado com sucesso !");
                 pr.close();
                 arq.close();
@@ -65,7 +65,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("veiculo.txt");
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Número de patrimonio: " + veiculo.getnPatrimonio() + "Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + "Local do patrimonio: " + veiculo.getLocal());
+                pr.println("Número de patrimonio: " + veiculo.getnPatrimonio() + ";" + "Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + ";" + "Local do patrimonio: " + veiculo.getLocal() + ";" + " Marca: " + veiculo.getMarca() + ";" + " Modelo do veiculo: " + veiculo.getModeloVeiculo() + ";" + " Aro do veiculo: " + veiculo.getAroVeiculo() + ";" + " Cor do veiculo: " + veiculo.getCorVeiculo() + ";" + " Placa do veiculo: " + veiculo.getPlacaVeiculo() + ";" );
                 System.out.println("Veiculo cadastrado com sucesso !");
 
                 pr.close();
@@ -87,7 +87,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("colete.txt");
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Número de patrimonio: " + colete.getnPatrimonio() + "Estado do patrimonio: " + colete.getEstadoPatrimonio() + "Local do patrimonio: " + colete.getLocal());
+                pr.println("Número de patrimonio: " + colete.getnPatrimonio() + ";" + "Estado do patrimonio: " + colete.getEstadoPatrimonio() + ";" + "Local do patrimonio: " + colete.getLocal() + ";" + " Marca: " + colete.getMarca() + ";" + " Tamanho do colete: " + colete.getTamanho() + ";" + " Nivel de protecao: " + colete.getNivelProtecao() + ";" + " Materia prima: " + colete.getMateriaPrima() + ";");
                 System.out.println("Colete cadastrado com sucesso !");
 
                 pr.close();
