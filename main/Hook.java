@@ -41,7 +41,7 @@ public class Hook {
             System.out.println("Digite em qual local a arma esta (Ex: segunda dp)");
             local = sc.nextLine(); 
         
-            System.out.println("Digite o estado da arma(novo, velho, com defeito)");
+            System.out.println("Digite o estado da arma (novo, velho, com defeito)");
             estadoPatrimonio = sc.nextLine();
 
             System.out.println("Digite o modelo da arma (Ex: ak47, glock 16):");

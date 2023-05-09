@@ -15,7 +15,7 @@ public class Arquivo {
             //verifica de o objeto foi construido 
             if(arma.getnPatrimonio() != 0){
                 
-                FileOutputStream arq = new FileOutputStream("arma.txt");
+                FileOutputStream arq = new FileOutputStream("arma.txt", true);
                 PrintWriter pr = new PrintWriter(arq);
 
                 
@@ -40,7 +40,7 @@ public class Arquivo {
 
         try{
             if(material.getnPatrimonio() != 0){
-                FileOutputStream arq = new FileOutputStream("eletronico.txt");
+                FileOutputStream arq = new FileOutputStream("material.txt", true);
                 PrintWriter pr = new PrintWriter(arq);
 
                 pr.println("Número de patrimonio: " + material.getnPatrimonio() + ";" + "Estado do patrimonio: " + material.getEstadoPatrimonio() + ";" + "Local do patrimonio: " + material.getLocal() + ";" + " Descrição do material: " + material.getDescricaoMaterial() + ";" + " Porte do material: " + material.getPorte() + ";");
@@ -62,7 +62,7 @@ public class Arquivo {
 
         try{
             if(veiculo.getnPatrimonio() != 0){
-                FileOutputStream arq = new FileOutputStream("veiculo.txt");
+                FileOutputStream arq = new FileOutputStream("veiculo.txt", true);
                 PrintWriter pr = new PrintWriter(arq);
 
                 pr.println("Número de patrimonio: " + veiculo.getnPatrimonio() + ";" + "Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + ";" + "Local do patrimonio: " + veiculo.getLocal() + ";" + " Marca: " + veiculo.getMarca() + ";" + " Modelo do veiculo: " + veiculo.getModeloVeiculo() + ";" + " Aro do veiculo: " + veiculo.getAroVeiculo() + ";" + " Cor do veiculo: " + veiculo.getCorVeiculo() + ";" + " Placa do veiculo: " + veiculo.getPlacaVeiculo() + ";" );
@@ -84,7 +84,7 @@ public class Arquivo {
 
         try{
             if(colete.getnPatrimonio() != 0){
-                FileOutputStream arq = new FileOutputStream("colete.txt");
+                FileOutputStream arq = new FileOutputStream("colete.txt",true);
                 PrintWriter pr = new PrintWriter(arq);
 
                 pr.println("Número de patrimonio: " + colete.getnPatrimonio() + ";" + "Estado do patrimonio: " + colete.getEstadoPatrimonio() + ";" + "Local do patrimonio: " + colete.getLocal() + ";" + " Marca: " + colete.getMarca() + ";" + " Tamanho do colete: " + colete.getTamanho() + ";" + " Nivel de protecao: " + colete.getNivelProtecao() + ";" + " Materia prima: " + colete.getMateriaPrima() + ";");
