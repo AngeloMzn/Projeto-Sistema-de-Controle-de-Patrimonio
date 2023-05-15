@@ -127,9 +127,13 @@ public class Arquivo {
             System.out.println("Você não escolheu nenhuma das opções !! escolha entre 1 a 4");
             System.out.println();
         }
-
+    
 
     }
+    /* 
+    public void buscaPatrimonio(int nPatrimonio){
+    
 
-
+    }
+    */
 }
