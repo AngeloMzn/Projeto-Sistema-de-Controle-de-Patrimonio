@@ -1,5 +1,8 @@
 package main;
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 import beans.Arma;
@@ -9,10 +12,10 @@ import beans.Veiculo;
 
 public class Arquivo {
     
-    public void cadastraArma(Arma arma){
+    public void cadastrar(Arma arma){
 
         try{
-            //verifica de o objeto foi construido 
+            //verifica se o objeto foi construido 
             if(arma.getnPatrimonio() != 0){
                 
                 FileOutputStream arq = new FileOutputStream("arma.txt", true);
@@ -36,7 +39,7 @@ public class Arquivo {
     }
 
 
-    public void cadastraMaterial(Material material){
+    public void cadastrar(Material material){
 
         try{
             if(material.getnPatrimonio() != 0){
@@ -58,7 +61,7 @@ public class Arquivo {
 
     }
 
-    public void cadastraVeiculo(Veiculo veiculo){
+    public void cadastrar(Veiculo veiculo){
 
         try{
             if(veiculo.getnPatrimonio() != 0){
@@ -80,7 +83,7 @@ public class Arquivo {
 
 
     }
-    public void cadastraColete(Colete colete){
+    public void cadastrar(Colete colete){
 
         try{
             if(colete.getnPatrimonio() != 0){
@@ -109,19 +112,19 @@ public class Arquivo {
         switch(tpPatrimonio){
 
             case 1:
-            cadastraArma(h.arma());
+            cadastrar(h.arma());
             break;
 
             case 2:
-            cadastraMaterial(h.material());
+            cadastrar(h.material());
             break;
 
             case 3:
-            cadastraColete(h.colete());
+            cadastrar(h.colete());
             break;
 
             case 4:
-            cadastraVeiculo(h.veiculo());
+            cadastrar(h.veiculo());
             break;
             default:
             System.out.println("Você não escolheu nenhuma das opções !! escolha entre 1 a 4");
@@ -130,10 +133,209 @@ public class Arquivo {
     
 
     }
-    /* 
-    public void buscaPatrimonio(int nPatrimonio){
+
+    public Arma buscaArma(int numeroPatrimonioBusca){
+        Arma arma = new Arma();
+       
+        try (BufferedReader br = new BufferedReader(new FileReader("arma.txt"))) {
+            
+            String linha;
+           
+            while ((linha = br.readLine()) != null) {
+               
+                if (linha.startsWith("Numero de patrimonio:")) {
+                   
+                    String numeroPatrimonio = linha.substring(linha.indexOf(":") + 1, linha.indexOf(";")).trim();
+                    
+                    if (numeroPatrimonio.equals(numeroPatrimonioBusca)) {
+                        int numero = Integer.parseInt(numeroPatrimonio);
+                        String estado = extrairValorCampo(linha, "Estado do patrimonio:");
+                        String local = extrairValorCampo(linha, "Local do patrimonio:");
+                        String marca = extrairValorCampo(linha, "Marca:");
+                        int numeroSerie = Integer.parseInt(extrairValorCampo(linha, "Numero de série:"));
+                        String modelo = extrairValorCampo(linha, "Modelo:");
+                        double calibre = Double.parseDouble(extrairValorCampo(linha, "Calibre:"));
+
+                        arma = new Arma(numero, estado, local, marca, numeroSerie, modelo, calibre);
+                       
+                        System.out.println();
+                        System.out.println("==============================");
+                        System.out.println("Busca realizada com sucesso !");
+                        System.out.println("==============================");
+                        System.out.println();
+                        
+                    }
+
+                }
+
+            }
+
+        } 
+        catch (IOException e) {
+           
+            e.printStackTrace();
+        
+        }
+
+        return arma;
+        
+    }
+
+    public Material buscaMaterial(int numeroPatrimonioBusca){
+        Material material = new Material();
+       
+        try (BufferedReader br = new BufferedReader(new FileReader("material.txt"))) {
+            
+            String linha;
+           
+            while ((linha = br.readLine()) != null) {
+               
+                if (linha.startsWith("Numero de patrimonio:")) {
+                   
+                    String numeroPatrimonio = linha.substring(linha.indexOf(":") + 1, linha.indexOf(";")).trim();
+                    
+                    if (numeroPatrimonio.equals(numeroPatrimonioBusca)) {
+                        int numero = Integer.parseInt(numeroPatrimonio);
+                        String estado = extrairValorCampo(linha, "Estado do patrimonio:");
+                        String local = extrairValorCampo(linha, "Local do patrimonio:");
+                        String marca = extrairValorCampo(linha, "Marca:");
+                        String descricao = extrairValorCampo(linha, "Descrição do material:");
+                        String porte = extrairValorCampo(linha, "Porte do material:");
+
+
+                        material = new Material(numero, estado, local, marca, descricao, porte);
+                       
+                        System.out.println();
+                        System.out.println("==============================");
+                        System.out.println("Busca realizada com sucesso !");
+                        System.out.println("==============================");
+                        System.out.println();
+                        
+                    }
+
+                }
+
+            }
+
+        } 
+        catch (IOException e) {
+           
+            e.printStackTrace();
+        
+        }
+
+        return material;
+        
+    }
+
+    public Colete buscaColete(int numeroPatrimonioBusca){
+        Colete colete = new Colete();
+       
+        try (BufferedReader br = new BufferedReader(new FileReader("colete.txt"))) {
+            
+            String linha;
+           
+            while ((linha = br.readLine()) != null) {
+               
+                if (linha.startsWith("Numero de patrimonio:")) {
+                   
+                    String numeroPatrimonio = linha.substring(linha.indexOf(":") + 1, linha.indexOf(";")).trim();
+                    
+                    if (numeroPatrimonio.equals(numeroPatrimonioBusca)) {
+                        int numero = Integer.parseInt(numeroPatrimonio);
+                        String estado = extrairValorCampo(linha, "Estado do patrimonio:");
+                        String local = extrairValorCampo(linha, "Local do patrimonio:");
+                        String marca = extrairValorCampo(linha, "Marca:");
+                        int nivelProtecao = Integer.parseInt(extrairValorCampo(linha, "Nivel de protecao:"));
+                        String tamanho = extrairValorCampo(linha, "Tamanho do colete:");
+                        String materiaPrima = extrairValorCampo(linha, "Materia prima:");
+
+                        colete = new Colete(numero, estado, local, marca, tamanho.charAt(0), nivelProtecao, materiaPrima );
+                       
+                        System.out.println();
+                        System.out.println("==============================");
+                        System.out.println("Busca realizada com sucesso !");
+                        System.out.println("==============================");
+                        System.out.println();
+                        
+                    }
+
+                }
+
+            }
+
+        } 
+        catch (IOException e) {
+           
+            e.printStackTrace();
+        
+        }
+
+        return colete;
+        
+    }
+    
+    public Veiculo buscaVeiculo(int numeroPatrimonioBusca){
+        Veiculo veiculo = new Veiculo();
+       
+        try (BufferedReader br = new BufferedReader(new FileReader("veiculo.txt"))) {
+            
+            String linha;
+           
+            while ((linha = br.readLine()) != null) {
+               
+                if (linha.startsWith("Numero de patrimonio:")) {
+                   
+                    String numeroPatrimonio = linha.substring(linha.indexOf(":") + 1, linha.indexOf(";")).trim();
+                    
+                    if (numeroPatrimonio.equals(numeroPatrimonioBusca)) {
+                        int numero = Integer.parseInt(numeroPatrimonio);
+                        String estado = extrairValorCampo(linha, "Estado do patrimonio:");
+                        String local = extrairValorCampo(linha, "Local do patrimonio:");
+                        String marca = extrairValorCampo(linha, "Marca:");
+                        
+                        String modelo = extrairValorCampo(linha, "Modelo do veiculo:");
+                        int aro = Integer.parseInt(extrairValorCampo(linha, "Aro do veiculo:"));
+                        String cor = extrairValorCampo(linha, "Cor do veiculo:");
+                        String placa = extrairValorCampo(linha, "Placa do veiculo:");
+
+                        veiculo = new Veiculo(numero, estado, local, marca, modelo, aro, cor, placa);
+                       
+                        System.out.println();
+                        System.out.println("=============================");
+                        System.out.println("Busca realizada com sucesso !");
+                        System.out.println("=============================");
+                        System.out.println();
+                        
+                    }
+
+                }
+
+            }
+
+        } 
+        catch (IOException e) {
+           
+            e.printStackTrace();
+        
+        }
+
+        return veiculo;
+        
+    }
+
+
+
     
 
+
+    private static String extrairValorCampo(String linha, String nomeCampo) {
+     
+        int inicio = linha.indexOf(nomeCampo) + nomeCampo.length(); // pega a posição do primeiro caractere da string e soma ao tamanho dando a posição do valor
+        int fim = linha.indexOf(";", inicio); //busca a posição do separador ; na posição posterior ao valor
+        return linha.substring(inicio, fim).trim(); // cria uma substring com o valor entre a posição do inicio e o fim e retira espaços com o trim()
+   
     }
-    */
+
+
 }
