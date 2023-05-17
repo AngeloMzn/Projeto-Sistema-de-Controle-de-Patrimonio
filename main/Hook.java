@@ -125,6 +125,7 @@ public class Hook {
 
             System.out.println("Digite o aro do veiuclo(Ex: aro 16):");
             aroVeiculo = sc.nextInt();
+            sc.nextLine(); // retirando o \n 
 
             System.out.println("Digite a cor do veiculo:");
             corVeiculo = sc.nextLine();
