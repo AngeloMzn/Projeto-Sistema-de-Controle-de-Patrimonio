@@ -176,5 +176,51 @@ public class Hook {
         return colete;
     }
 
+    public Arma alteraLocal(Arma arma){
+        Scanner sc = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Digite o novo local do patrimonio:");
+        String movimentacao = sc.nextLine();
+        
+        arma.setLocal(movimentacao);
+        return arma;
+   
+    }
+   
+    public Material alteraLocal(Material material){
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Digite o novo local do patrimonio:");
+        String movimentacao = sc.nextLine();
+        
+        material.setLocal(movimentacao);
+        return material;
+
+    }   
+   
+    public Colete alteraLocal(Colete colete){
+       
+        Scanner sc = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Digite o novo local do patrimonio:");
+        String movimentacao = sc.nextLine();
+
+        colete.setLocal(movimentacao);
+        return colete;
+
+    }    
+   
+    public Veiculo alteraLocal(Veiculo veiculo){
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Digite o novo local do patrimonio:");
+        String movimentacao = sc.nextLine();
+
+        veiculo.setLocal(movimentacao);
+        return veiculo;
+
+    }
 
 }

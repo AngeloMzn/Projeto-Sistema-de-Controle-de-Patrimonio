@@ -1,7 +1,9 @@
 package main;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -46,7 +48,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("material.txt", true);
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Número de patrimonio: " + material.getnPatrimonio() + ";" + "Estado do patrimonio: " + material.getEstadoPatrimonio() + ";" + "Local do patrimonio: " + material.getLocal() + ";" + " Descrição do material: " + material.getDescricaoMaterial() + ";" + " Porte do material: " + material.getPorte() + ";");
+                pr.println("Numero de patrimonio: " + material.getnPatrimonio() + ";" + " Estado do patrimonio: " + material.getEstadoPatrimonio() + ";" + " Local do patrimonio: " + material.getLocal() + ";" + " Descrição do material: " + material.getDescricaoMaterial() + ";" + " Porte do material: " + material.getPorte() + ";");
                 System.out.println("Material cadastrado com sucesso !");
                 pr.close();
                 arq.close();
@@ -68,7 +70,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("veiculo.txt", true);
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Número de patrimonio: " + veiculo.getnPatrimonio() + ";" + "Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + ";" + "Local do patrimonio: " + veiculo.getLocal() + ";" + " Marca: " + veiculo.getMarca() + ";" + " Modelo do veiculo: " + veiculo.getModeloVeiculo() + ";" + " Aro do veiculo: " + veiculo.getAroVeiculo() + ";" + " Cor do veiculo: " + veiculo.getCorVeiculo() + ";" + " Placa do veiculo: " + veiculo.getPlacaVeiculo() + ";" );
+                pr.println("Numero de patrimonio: " + veiculo.getnPatrimonio() + ";" + " Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + ";" + " Local do patrimonio: " + veiculo.getLocal() + ";" + " Marca: " + veiculo.getMarca() + ";" + " Modelo do veiculo: " + veiculo.getModeloVeiculo() + ";" + " Aro do veiculo: " + veiculo.getAroVeiculo() + ";" + " Cor do veiculo: " + veiculo.getCorVeiculo() + ";" + " Placa do veiculo: " + veiculo.getPlacaVeiculo() + ";" );
                 System.out.println("Veiculo cadastrado com sucesso !");
 
                 pr.close();
@@ -90,7 +92,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("colete.txt",true);
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Número de patrimonio: " + colete.getnPatrimonio() + ";" + "Estado do patrimonio: " + colete.getEstadoPatrimonio() + ";" + "Local do patrimonio: " + colete.getLocal() + ";" + " Marca: " + colete.getMarca() + ";" + " Tamanho do colete: " + colete.getTamanho() + ";" + " Nivel de protecao: " + colete.getNivelProtecao() + ";" + " Materia prima: " + colete.getMateriaPrima() + ";");
+                pr.println("Numero de patrimonio: " + colete.getnPatrimonio() + ";" + " Estado do patrimonio: " + colete.getEstadoPatrimonio() + ";" + " Local do patrimonio: " + colete.getLocal() + ";" + " Marca: " + colete.getMarca() + ";" + " Tamanho do colete: " + colete.getTamanho() + ";" + " Nivel de protecao: " + colete.getNivelProtecao() + ";" + " Materia prima: " + colete.getMateriaPrima() + ";");
                 System.out.println("Colete cadastrado com sucesso !");
 
                 pr.close();
@@ -147,7 +149,7 @@ public class Arquivo {
                    
                     String numeroPatrimonio = linha.substring(linha.indexOf(":") + 1, linha.indexOf(";")).trim();
                     
-                    if (numeroPatrimonio.equals(numeroPatrimonioBusca)) {
+                    if (numeroPatrimonio.equals(String.valueOf(numeroPatrimonioBusca))) {
                         int numero = Integer.parseInt(numeroPatrimonio);
                         String estado = extrairValorCampo(linha, "Estado do patrimonio:");
                         String local = extrairValorCampo(linha, "Local do patrimonio:");
@@ -157,7 +159,7 @@ public class Arquivo {
                         double calibre = Double.parseDouble(extrairValorCampo(linha, "Calibre:"));
 
                         arma = new Arma(numero, estado, local, marca, numeroSerie, modelo, calibre);
-                       
+                        System.out.println(arma);
                         System.out.println();
                         System.out.println("==============================");
                         System.out.println("Busca realizada com sucesso !");
@@ -173,6 +175,7 @@ public class Arquivo {
         } 
         catch (IOException e) {
            
+            System.out.println("deu ruim ");  
             e.printStackTrace();
         
         }
@@ -194,7 +197,7 @@ public class Arquivo {
                    
                     String numeroPatrimonio = linha.substring(linha.indexOf(":") + 1, linha.indexOf(";")).trim();
                     
-                    if (numeroPatrimonio.equals(numeroPatrimonioBusca)) {
+                    if (numeroPatrimonio.equals(String.valueOf(numeroPatrimonioBusca))) {
                         int numero = Integer.parseInt(numeroPatrimonio);
                         String estado = extrairValorCampo(linha, "Estado do patrimonio:");
                         String local = extrairValorCampo(linha, "Local do patrimonio:");
@@ -220,6 +223,7 @@ public class Arquivo {
         } 
         catch (IOException e) {
            
+            System.out.println("deu ruim");
             e.printStackTrace();
         
         }
@@ -241,7 +245,7 @@ public class Arquivo {
                    
                     String numeroPatrimonio = linha.substring(linha.indexOf(":") + 1, linha.indexOf(";")).trim();
                     
-                    if (numeroPatrimonio.equals(numeroPatrimonioBusca)) {
+                    if (numeroPatrimonio.equals(String.valueOf(numeroPatrimonioBusca))) {
                         int numero = Integer.parseInt(numeroPatrimonio);
                         String estado = extrairValorCampo(linha, "Estado do patrimonio:");
                         String local = extrairValorCampo(linha, "Local do patrimonio:");
@@ -288,7 +292,7 @@ public class Arquivo {
                    
                     String numeroPatrimonio = linha.substring(linha.indexOf(":") + 1, linha.indexOf(";")).trim();
                     
-                    if (numeroPatrimonio.equals(numeroPatrimonioBusca)) {
+                    if (numeroPatrimonio.equals(String.valueOf(numeroPatrimonioBusca))) {
                         int numero = Integer.parseInt(numeroPatrimonio);
                         String estado = extrairValorCampo(linha, "Estado do patrimonio:");
                         String local = extrairValorCampo(linha, "Local do patrimonio:");
@@ -324,17 +328,217 @@ public class Arquivo {
         
     }
 
-
-
-    
-
-
     private static String extrairValorCampo(String linha, String nomeCampo) {
      
         int inicio = linha.indexOf(nomeCampo) + nomeCampo.length(); // pega a posição do primeiro caractere da string e soma ao tamanho dando a posição do valor
         int fim = linha.indexOf(";", inicio); //busca a posição do separador ; na posição posterior ao valor
         return linha.substring(inicio, fim).trim(); // cria uma substring com o valor entre a posição do inicio e o fim e retira espaços com o trim()
    
+    }
+
+    public void alteraLocal(Arma arma){
+        
+        Hook h = new Hook();
+        
+        h.alteraLocal(arma);
+        
+        //sobrescrevendo apenas a linha com local alterado
+        try {
+            File file = new File("arma.txt");
+            BufferedReader reader = new BufferedReader(new FileReader("arma.txt"));
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] tokens = line.split(";");
+
+                // Verifica se a linha corresponde ao objeto desejado
+                if (tokens.length >= 6 && tokens[0].trim().equals("Numero de patrimonio: " + arma.getnPatrimonio())) {
+                    // Atualiza o local do patrimônio
+                    tokens[2] = " Local do patrimonio: " + arma.getLocal();
+                    line = String.join("; ", tokens);
+                }
+
+                stringBuilder.append(line).append("\n");
+            }
+
+            reader.close();
+
+            // Escreve o conteúdo atualizado de volta para o arquivo
+            FileWriter writer = new FileWriter(file);
+            writer.write(stringBuilder.toString());
+            writer.close();
+
+            System.out.println("A movimentacao foi concluida com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro ao tentar movimentar o veiculo: " + e.getMessage());
+        }
+
+    }
+    
+    
+    public void alteraLocal(Veiculo veiculo){
+
+        Hook h = new Hook();
+        
+        veiculo = h.alteraLocal(veiculo);
+        
+        //sobrescrevendo apenas a linha com local alterado
+        try {
+            File file = new File("veiculo.txt");
+            BufferedReader reader = new BufferedReader(new FileReader("veiculo.txt"));
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] tokens = line.split(";");
+
+                // Verifica se a linha corresponde ao objeto desejado
+                if (tokens.length >= 6 && tokens[0].trim().equals("Numero de patrimonio: " + veiculo.getnPatrimonio())) {
+                    // Atualiza o local do patrimônio
+                    tokens[2] = " Local do patrimonio: " + veiculo.getLocal();
+                    line = String.join("; ", tokens);
+                }
+
+                stringBuilder.append(line).append("\n");
+            }
+
+            reader.close();
+
+            // Escreve o conteúdo atualizado de volta para o arquivo
+            FileWriter writer = new FileWriter(file);
+            writer.write(stringBuilder.toString());
+            writer.close();
+
+            System.out.println("A movimentacao foi concluida com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro ao tentar movimentar o veiculo: " + e.getMessage());
+        }
+    }   
+
+   
+    public void alteraLocal(Material material){
+
+        Hook h = new Hook();
+        
+        h.alteraLocal(material);
+
+        //sobrescrevendo apenas a linha com local alterado
+        try {
+            File file = new File("material.txt");
+            BufferedReader reader = new BufferedReader(new FileReader("material.txt"));
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] tokens = line.split(";");
+
+                // Verifica se a linha corresponde ao objeto desejado
+                if (tokens.length >= 6 && tokens[0].trim().equals("Numero de patrimonio: " + material.getnPatrimonio())) {
+                    // Atualiza o local do patrimônio
+                    tokens[2] = " Local do patrimonio: " + material.getLocal();
+                    line = String.join("; ", tokens);
+                }
+
+                stringBuilder.append(line).append("\n");
+            }
+
+            reader.close();
+
+            // Escreve o conteúdo atualizado de volta para o arquivo
+            FileWriter writer = new FileWriter(file);
+            writer.write(stringBuilder.toString());
+            writer.close();
+
+            System.out.println("A movimentacao foi concluida com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro ao tentar movimentar o veiculo: " + e.getMessage());
+        }
+
+    }
+    
+    public void alteraLocal(Colete colete){
+
+        Hook h = new Hook();
+        
+        h.alteraLocal(colete);
+
+        //sobrescrevendo apenas a linha com local alterado
+        try {
+            File file = new File("colete.txt");
+            BufferedReader reader = new BufferedReader(new FileReader("colete.txt"));
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] tokens = line.split(";");
+
+                // Verifica se a linha corresponde ao objeto desejado
+                if (tokens.length >= 6 && tokens[0].trim().equals("Numero de patrimonio: " + colete.getnPatrimonio())) {
+                    // Atualiza o local do patrimônio
+                    tokens[2] = " Local do patrimonio: " + colete.getLocal();
+                    line = String.join("; ", tokens);
+                }
+
+                stringBuilder.append(line).append("\n");
+            }
+
+            reader.close();
+
+            // Escreve o conteúdo atualizado de volta para o arquivo
+            FileWriter writer = new FileWriter(file);
+            writer.write(stringBuilder.toString());
+            writer.close();
+
+            System.out.println("A movimentacao foi concluida com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro ao tentar movimentar o veiculo: " + e.getMessage());
+        }
+
+    }
+
+    public void movimentaPatrimonio(int tpPatrimonio, int nPatrimonio){
+        
+        switch(tpPatrimonio){
+
+            case 1:   
+           
+            Arma arma = buscaArma(nPatrimonio);
+            alteraLocal(arma);
+           
+            break;
+           
+            case 2:
+            
+            Material material = buscaMaterial(nPatrimonio);
+            alteraLocal(material);
+           
+            break;
+
+            case 3:
+            
+            Colete colete = buscaColete(nPatrimonio);
+            alteraLocal(colete);
+            
+            break;
+
+            case 4:
+            Veiculo veiculo = buscaVeiculo(nPatrimonio);
+            alteraLocal(veiculo);
+           
+            break;
+            
+            default:
+           
+            System.out.println("Você não escolheu nenhuma das opções !! escolha entre 1 a 4");
+            System.out.println();
+        }
+    
+
     }
 
 

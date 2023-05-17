@@ -7,7 +7,7 @@ public class App{
     
     Menu m = new Menu();
     Scanner r = new Scanner(System.in);
-    int escolha, tpPatrimonio;
+    int escolha, tpPatrimonio, nPatrimonio;
     Arquivo arq = new Arquivo();
 
     do {
@@ -41,10 +41,15 @@ public class App{
             
             System.out.println();  
             System.out.println("Vamos movimentar um patrimonio então !");
+            System.out.println("escolha tipo de patrimonio vai escolher");
             System.out.println();
            
             m.menuTpPatrimonio();
             tpPatrimonio = r.nextInt();
+            System.out.println();
+            System.out.println("digite o numero de patrimonio");
+            nPatrimonio = r.nextInt();
+            arq.movimentaPatrimonio(tpPatrimonio, nPatrimonio);
 
 
             break;
