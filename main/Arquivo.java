@@ -48,7 +48,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("material.txt", true);
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Numero de patrimonio: " + material.getnPatrimonio() + ";" + " Estado do patrimonio: " + material.getEstadoPatrimonio() + ";" + " Local do patrimonio: " + material.getLocal() + ";" + " Descrição do material: " + material.getDescricaoMaterial() + ";" + " Porte do material: " + material.getPorte() + ";");
+                pr.println("Numero de patrimonio: " + material.getnPatrimonio() + ";" + " Estado do patrimonio: " + material.getEstadoPatrimonio() + ";" + " Marca: " + material.getMarca()+ ";" + " Local do patrimonio: " + material.getLocal() + ";" + " Descrição do material: " + material.getDescricaoMaterial() + ";" + " Porte do material: " + material.getPorte() + ";");
                 System.out.println("Material cadastrado com sucesso !");
                 pr.close();
                 arq.close();
@@ -70,7 +70,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("veiculo.txt", true);
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Numero de patrimonio: " + veiculo.getnPatrimonio() + ";" + " Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + ";" + " Local do patrimonio: " + veiculo.getLocal() + ";" + " Marca: " + veiculo.getMarca() + ";" + " Modelo do veiculo: " + veiculo.getModeloVeiculo() + ";" + " Aro do veiculo: " + veiculo.getAroVeiculo() + ";" + " Cor do veiculo: " + veiculo.getCorVeiculo() + ";" + " Placa do veiculo: " + veiculo.getPlacaVeiculo() + ";" );
+                pr.println("Numero de patrimonio: " + veiculo.getnPatrimonio() + ";" + " Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + ";" + " Marca: " + veiculo.getMarca()+ ";" + " Local do patrimonio: " + veiculo.getLocal() + ";" + " Marca: " + veiculo.getMarca() + ";" + " Modelo do veiculo: " + veiculo.getModeloVeiculo() + ";" + " Aro do veiculo: " + veiculo.getAroVeiculo() + ";" + " Cor do veiculo: " + veiculo.getCorVeiculo() + ";" + " Placa do veiculo: " + veiculo.getPlacaVeiculo() + ";" );
                 System.out.println("Veiculo cadastrado com sucesso !");
 
                 pr.close();
@@ -92,7 +92,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("colete.txt",true);
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Numero de patrimonio: " + colete.getnPatrimonio() + ";" + " Estado do patrimonio: " + colete.getEstadoPatrimonio() + ";" + " Local do patrimonio: " + colete.getLocal() + ";" + " Marca: " + colete.getMarca() + ";" + " Tamanho do colete: " + colete.getTamanho() + ";" + " Nivel de protecao: " + colete.getNivelProtecao() + ";" + " Materia prima: " + colete.getMateriaPrima() + ";");
+                pr.println("Numero de patrimonio: " + colete.getnPatrimonio() + ";" + " Estado do patrimonio: " + colete.getEstadoPatrimonio() + ";" + " Marca: " + colete.getMarca()+ ";" + " Local do patrimonio: " + colete.getLocal() + ";" + " Marca: " + colete.getMarca() + ";" + " Tamanho do colete: " + colete.getTamanho() + ";" + " Nivel de protecao: " + colete.getNivelProtecao() + ";" + " Materia prima: " + colete.getMateriaPrima() + ";");
                 System.out.println("Colete cadastrado com sucesso !");
 
                 pr.close();
@@ -329,11 +329,19 @@ public class Arquivo {
     }
 
     private static String extrairValorCampo(String linha, String nomeCampo) {
-     
-        int inicio = linha.indexOf(nomeCampo) + nomeCampo.length(); // pega a posição do primeiro caractere da string e soma ao tamanho dando a posição do valor
-        int fim = linha.indexOf(";", inicio); //busca a posição do separador ; na posição posterior ao valor
-        return linha.substring(inicio, fim).trim(); // cria uma substring com o valor entre a posição do inicio e o fim e retira espaços com o trim()
-   
+        int inicio = linha.indexOf(nomeCampo);
+        if (inicio != -1) { // Verifica se o nome do campo foi encontrado na linha
+            inicio += nomeCampo.length(); // Incrementa o índice para apontar para o próximo caractere após o nome do campo
+            int fim = linha.indexOf(";", inicio);
+            if (fim != -1) { // Verifica se o separador ';' foi encontrado após o valor do campo
+                return linha.substring(inicio, fim).trim();
+            } else {
+                System.out.println("Erro: Separador ';' não encontrado após o valor do campo '" + nomeCampo + "'. Linha: " + linha);
+            }
+        } else {
+            System.out.println("Erro: Campo '" + nomeCampo + "' não encontrado na linha: " + linha);
+        }
+        return null; // Retorna null em caso de erro
     }
 
     public void alteraLocal(Arma arma){
