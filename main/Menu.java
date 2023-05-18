@@ -15,7 +15,7 @@ public class Menu {
         System.out.println("1 - cadastrar patrimonio");
         System.out.println("2 - movimentar patrimonio");
         System.out.println("3 - remover partimonio");
-        System.out.println("4 - editar patrimonio");
+        System.out.println("4 - listar patrimonio");
         System.out.println("================================");
         System.out.println("digite sua escolha: ");
 

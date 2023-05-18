@@ -69,12 +69,12 @@ public class App{
             case 4:
         
             System.out.println();  
-            System.out.println("Vamos editar um patrimonio então !");
+            System.out.println("Vamos listar todos os patrimonios de um tipo então !");
             System.out.println();
             
             m.menuTpPatrimonio();
             tpPatrimonio = r.nextInt();
-
+            arq.listaPatrimonio(tpPatrimonio);
 
             break;
     

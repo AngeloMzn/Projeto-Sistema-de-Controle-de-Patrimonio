@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.sql.rowset.spi.SyncResolver;
+
 import beans.Arma;
 import beans.Colete;
 import beans.Material;
@@ -48,7 +50,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("material.txt", true);
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Numero de patrimonio: " + material.getnPatrimonio() + ";" + " Estado do patrimonio: " + material.getEstadoPatrimonio() + ";" + " Marca: " + material.getMarca()+ ";" + " Local do patrimonio: " + material.getLocal() + ";" + " Descrição do material: " + material.getDescricaoMaterial() + ";" + " Porte do material: " + material.getPorte() + ";");
+                pr.println("Numero de patrimonio: " + material.getnPatrimonio() + ";" + " Estado do patrimonio: " + material.getEstadoPatrimonio() + ";" +" Local do patrimonio: " + material.getLocal() + ";" +  " Marca: " + material.getMarca()+ ";" + " Descrição do material: " + material.getDescricaoMaterial() + ";" + " Porte do material: " + material.getPorte() + ";");
                 System.out.println("Material cadastrado com sucesso !");
                 pr.close();
                 arq.close();
@@ -70,7 +72,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("veiculo.txt", true);
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Numero de patrimonio: " + veiculo.getnPatrimonio() + ";" + " Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + ";" + " Marca: " + veiculo.getMarca()+ ";" + " Local do patrimonio: " + veiculo.getLocal() + ";" + " Marca: " + veiculo.getMarca() + ";" + " Modelo do veiculo: " + veiculo.getModeloVeiculo() + ";" + " Aro do veiculo: " + veiculo.getAroVeiculo() + ";" + " Cor do veiculo: " + veiculo.getCorVeiculo() + ";" + " Placa do veiculo: " + veiculo.getPlacaVeiculo() + ";" );
+                pr.println("Numero de patrimonio: " + veiculo.getnPatrimonio() + ";" + " Estado do patrimonio: " + veiculo.getEstadoPatrimonio() + ";" + " Local do patrimonio: " + veiculo.getLocal() + ";" + " Marca: " + veiculo.getMarca() + ";" + " Marca: " + veiculo.getMarca() + ";" + " Modelo do veiculo: " + veiculo.getModeloVeiculo() + ";" + " Aro do veiculo: " + veiculo.getAroVeiculo() + ";" + " Cor do veiculo: " + veiculo.getCorVeiculo() + ";" + " Placa do veiculo: " + veiculo.getPlacaVeiculo() + ";" );
                 System.out.println("Veiculo cadastrado com sucesso !");
 
                 pr.close();
@@ -92,7 +94,7 @@ public class Arquivo {
                 FileOutputStream arq = new FileOutputStream("colete.txt",true);
                 PrintWriter pr = new PrintWriter(arq);
 
-                pr.println("Numero de patrimonio: " + colete.getnPatrimonio() + ";" + " Estado do patrimonio: " + colete.getEstadoPatrimonio() + ";" + " Marca: " + colete.getMarca()+ ";" + " Local do patrimonio: " + colete.getLocal() + ";" + " Marca: " + colete.getMarca() + ";" + " Tamanho do colete: " + colete.getTamanho() + ";" + " Nivel de protecao: " + colete.getNivelProtecao() + ";" + " Materia prima: " + colete.getMateriaPrima() + ";");
+                pr.println("Numero de patrimonio: " + colete.getnPatrimonio() + ";" + " Estado do patrimonio: " + colete.getEstadoPatrimonio() + ";" + " Local do patrimonio: " + colete.getLocal() + ";" + " Marca: " + colete.getMarca() + ";" + " Marca: " + colete.getMarca() + ";" + " Tamanho do colete: " + colete.getTamanho() + ";" + " Nivel de protecao: " + colete.getNivelProtecao() + ";" + " Materia prima: " + colete.getMateriaPrima() + ";");
                 System.out.println("Colete cadastrado com sucesso !");
 
                 pr.close();
@@ -159,7 +161,7 @@ public class Arquivo {
                         double calibre = Double.parseDouble(extrairValorCampo(linha, "Calibre:"));
 
                         arma = new Arma(numero, estado, local, marca, numeroSerie, modelo, calibre);
-                        System.out.println(arma);
+
                         System.out.println();
                         System.out.println("==============================");
                         System.out.println("Busca realizada com sucesso !");
@@ -367,7 +369,7 @@ public class Arquivo {
                     line = String.join("; ", tokens);
                 }
 
-                stringBuilder.append(line).append("\n");
+                stringBuilder.append(line).append(";\n");
             }
 
             reader.close();
@@ -377,7 +379,11 @@ public class Arquivo {
             writer.write(stringBuilder.toString());
             writer.close();
 
+            System.out.println();
+            System.out.println("=========================================");
             System.out.println("A movimentacao foi concluida com sucesso!");
+            System.out.println("=========================================");
+            System.out.println();
 
         } catch (IOException e) {
             System.out.println("Ocorreu um erro ao tentar movimentar o veiculo: " + e.getMessage());
@@ -409,7 +415,7 @@ public class Arquivo {
                     line = String.join("; ", tokens);
                 }
 
-                stringBuilder.append(line).append("\n");
+                stringBuilder.append(line).append(";\n");
             }
 
             reader.close();
@@ -419,7 +425,11 @@ public class Arquivo {
             writer.write(stringBuilder.toString());
             writer.close();
 
+            System.out.println();
+            System.out.println("=========================================");
             System.out.println("A movimentacao foi concluida com sucesso!");
+            System.out.println("=========================================");
+            System.out.println();
 
         } catch (IOException e) {
             System.out.println("Ocorreu um erro ao tentar movimentar o veiculo: " + e.getMessage());
@@ -450,7 +460,7 @@ public class Arquivo {
                     line = String.join("; ", tokens);
                 }
 
-                stringBuilder.append(line).append("\n");
+                stringBuilder.append(line).append(";\n");
             }
 
             reader.close();
@@ -460,7 +470,11 @@ public class Arquivo {
             writer.write(stringBuilder.toString());
             writer.close();
 
+            System.out.println();
+            System.out.println("=========================================");
             System.out.println("A movimentacao foi concluida com sucesso!");
+            System.out.println("=========================================");
+            System.out.println();
 
         } catch (IOException e) {
             System.out.println("Ocorreu um erro ao tentar movimentar o veiculo: " + e.getMessage());
@@ -491,7 +505,7 @@ public class Arquivo {
                     line = String.join("; ", tokens);
                 }
 
-                stringBuilder.append(line).append("\n");
+                stringBuilder.append(line).append(";\n");
             }
 
             reader.close();
@@ -501,7 +515,11 @@ public class Arquivo {
             writer.write(stringBuilder.toString());
             writer.close();
 
+            System.out.println();
+            System.out.println("=========================================");
             System.out.println("A movimentacao foi concluida com sucesso!");
+            System.out.println("=========================================");
+            System.out.println();
 
         } catch (IOException e) {
             System.out.println("Ocorreu um erro ao tentar movimentar o veiculo: " + e.getMessage());
@@ -541,13 +559,146 @@ public class Arquivo {
             break;
             
             default:
-           
+            
+            System.out.println();
             System.out.println("Você não escolheu nenhuma das opções !! escolha entre 1 a 4");
             System.out.println();
         }
-    
+        
+      
+
+        
+    }
+
+    public void listaArma(){
+
+        try(BufferedReader br = new BufferedReader(new FileReader("arma.txt"))) {
+            String linha;
+            while((linha = br.readLine()) != null){
+
+                String numeroPatrimonio = extrairValorCampo(linha, "Numero de patrimonio: ");
+                String estado = extrairValorCampo(linha, "Estado do patrimonio:");
+                String marca = extrairValorCampo(linha, "Marca:");
+                String local = extrairValorCampo(linha, "Local do patrimonio:");
+
+                System.out.println("Arma - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
+            }
+
+        } catch (Exception e) {
+            
+            System.out.println("Não foi possivel ler o arquivo !");
+
+        }
+    }
+
+    public void listaMaterial(){
+
+        try(BufferedReader br = new BufferedReader(new FileReader("material.txt"))) {
+            String linha;
+            while((linha = br.readLine()) != null){
+
+                String numeroPatrimonio = extrairValorCampo(linha, "Numero de patrimonio: ");
+                String estado = extrairValorCampo(linha, "Estado do patrimonio:");
+                String marca = extrairValorCampo(linha, "Marca:");
+                String local = extrairValorCampo(linha, "Local do patrimonio:");
+
+                System.out.println("Arma - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
+            }
+
+        } catch (Exception e) {
+            
+            System.out.println("Não foi possivel ler o arquivo !");
+
+        }
+    }
+    public void listaColete(){
+
+        try(BufferedReader br = new BufferedReader(new FileReader("colete.txt"))) {
+            String linha;
+            while((linha = br.readLine()) != null){
+
+                String numeroPatrimonio = extrairValorCampo(linha, "Numero de patrimonio: ");
+                String estado = extrairValorCampo(linha, "Estado do patrimonio:");
+                String marca = extrairValorCampo(linha, "Marca:");
+                String local = extrairValorCampo(linha, "Local do patrimonio:");
+
+                System.out.println("Arma - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
+            }
+
+        } catch (Exception e) {
+            
+            System.out.println("Não foi possivel ler o arquivo !");
+
+        }
 
     }
 
+    public void listaVeiculo(){
+
+        try(BufferedReader br = new BufferedReader(new FileReader("veiculo.txt"))) {
+            String linha;
+            while((linha = br.readLine()) != null){
+
+                String numeroPatrimonio = extrairValorCampo(linha, "Numero de patrimonio: ");
+                String estado = extrairValorCampo(linha, "Estado do patrimonio:");
+                String marca = extrairValorCampo(linha, "Marca:");
+                String local = extrairValorCampo(linha, "Local do patrimonio:");
+
+                System.out.println("Arma - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
+            }
+            
+
+        } catch (Exception e) {
+            
+            System.out.println("Não foi possivel ler o arquivo !");
+
+        }
+    }
+
+    public void listaPatrimonio(int tpPatrimonio){
+
+        switch(tpPatrimonio){
+
+            case 1:
+            System.out.println();
+            System.out.println("<-------------------------------------------------------------------------->");
+            listaArma();
+            System.out.println("<-------------------------------------------------------------------------->");
+            System.out.println();
+            break;
+
+            case 2:
+            System.out.println();
+            System.out.println("<-------------------------------------------------------------------------->");
+            listaMaterial();
+            System.out.println("<-------------------------------------------------------------------------->");
+            System.out.println();
+            break;
+
+            case 3:
+            System.out.println();
+            System.out.println("<-------------------------------------------------------------------------->");
+            listaColete();
+            System.out.println("<-------------------------------------------------------------------------->");
+            System.out.println();
+            break;
+
+            case 4:
+            System.out.println();
+            System.out.println("<-------------------------------------------------------------------------->");
+            listaVeiculo();
+            System.out.println("<-------------------------------------------------------------------------->");
+            System.out.println();
+            break;
+
+            default:
+            System.out.println();
+            System.out.println("Sua escolha deve ser entre 1 e 4 !");
+            System.out.println();
+
+        }
+
+
+    }
 
 }
