@@ -602,7 +602,7 @@ public class Arquivo {
                 String marca = extrairValorCampo(linha, "Marca:");
                 String local = extrairValorCampo(linha, "Local do patrimonio:");
 
-                System.out.println("Arma - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
+                System.out.println("Material - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
             }
 
         } catch (Exception e) {
@@ -622,7 +622,7 @@ public class Arquivo {
                 String marca = extrairValorCampo(linha, "Marca:");
                 String local = extrairValorCampo(linha, "Local do patrimonio:");
 
-                System.out.println("Arma - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
+                System.out.println("Colete - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
             }
 
         } catch (Exception e) {
@@ -644,7 +644,7 @@ public class Arquivo {
                 String marca = extrairValorCampo(linha, "Marca:");
                 String local = extrairValorCampo(linha, "Local do patrimonio:");
 
-                System.out.println("Arma - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
+                System.out.println("Veiculo - " + "Numero de patrimonio: " + numeroPatrimonio + "; Estado: " + estado + "; Marca: " + marca + "; Local: " + local);
             }
             
 
