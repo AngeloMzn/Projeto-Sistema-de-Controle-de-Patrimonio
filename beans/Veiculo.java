@@ -42,7 +42,7 @@ public class Veiculo extends Patrimonio{
 
         if(nSerie.length() != 7){
             
-            throw new IllegalArgumentException("O numero deve conter 8 caracteres ! você colocou: " + nSerie.length());
+            throw new IllegalArgumentException("O numero da placa deve conter 7 caracteres ! você colocou: " + nSerie.length());
 
         }else{
 

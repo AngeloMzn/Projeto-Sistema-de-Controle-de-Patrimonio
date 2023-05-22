@@ -141,6 +141,7 @@ public class Hook {
         String marca, local, estadoPatrimonio, modeloVeiculo, corVeiculo, placaVeiculo;
         int aroVeiculo, nPatrimonio;
         Veiculo veiculo = new Veiculo();
+        boolean placaValida = false;
         
         try{
             if(veiculo.verificaQtdVeiculo()){
@@ -169,8 +170,27 @@ public class Hook {
                 System.out.println("Digite a cor do veiculo:");
                 corVeiculo = sc.nextLine();
 
-                System.out.println("Digite a placa do veiculo:");
-                placaVeiculo = sc.nextLine();
+                do{
+                    System.out.println("Digite a placa do veiculo:");
+                    placaVeiculo = sc.nextLine();
+                    try{
+                        
+
+                        if(veiculo.verificaPlaca(placaVeiculo)){
+                            
+                            placaValida = true;
+
+                        }
+
+                    }catch(IllegalArgumentException e){
+                       
+                        System.out.println();
+                        System.out.println("ERRO:" + e.getMessage());
+                        System.out.println();
+
+                    }
+            
+                }while(placaValida);
 
                 veiculo = new Veiculo(nPatrimonio, estadoPatrimonio, marca, local, modeloVeiculo, aroVeiculo, corVeiculo, placaVeiculo);
             }       
