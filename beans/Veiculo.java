@@ -27,15 +27,28 @@ public class Veiculo extends Patrimonio{
     public boolean verificaQtdVeiculo(){
 
         if(qtdVeiculo >= 100){
-            System.out.println("Memoria cheia. Você não pode mais cadastrar veículos.");
+            throw new OutOfMemoryError("Memoria cheia. Você não pode mais cadastrar veiculos.");
             
-            return false;
 
         }else{
 
             return true;
         }
 
+
+    }
+    
+    public boolean verificaPlaca(String nSerie){
+
+        if(nSerie.length() != 7){
+            
+            throw new IllegalArgumentException("O numero deve conter 8 caracteres ! você colocou: " + nSerie.length());
+
+        }else{
+
+            return true;
+
+        }
 
     }
     

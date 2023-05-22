@@ -27,7 +27,7 @@ public class Colete extends Patrimonio {
 
         if(qtdColete >= 100){
             
-            return false;
+            throw new OutOfMemoryError("Memoria cheia. Você não pode mais cadastrar Coletes.");
 
         }else{
 

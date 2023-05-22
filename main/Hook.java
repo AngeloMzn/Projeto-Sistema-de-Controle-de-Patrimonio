@@ -22,43 +22,72 @@ public class Hook {
     public Arma arma(){
         Scanner sc = new Scanner(System.in);
         Random r = new Random();
-        String marca, local, estadoPatrimonio, modeloArma;
-        int nSerie, nPatrimonio;
-        double calibre;
+        String marca, local, estadoPatrimonio, modeloArma, nSerie, calibre;
+        int nPatrimonio;
+        boolean nSerieValido = false;
+    
         Arma arma = new Arma();
 
         // se a quantidade de arma for maior ou igual a 100 o metodo retorna um objeto inicializado com 0
-        if(arma.verificaQtdArma()){
+        try{
+            if(arma.verificaQtdArma()){
 
-            nPatrimonio = r.nextInt(101) + 1;
+                nPatrimonio = r.nextInt(101) + 1;
 
-            System.out.println("Você está cadastrando uma Arma!");
-            System.out.println("===============================");
-        
-            System.out.println("Digite a marca da arma (Ex: taurus, colt):");
-            marca = sc.nextLine(); 
-        
-            System.out.println("Digite em qual local a arma esta (Ex: segunda dp)");
-            local = sc.nextLine(); 
-        
-            System.out.println("Digite o estado da arma (novo, velho, com defeito)");
-            estadoPatrimonio = sc.nextLine();
+                System.out.println("Você está cadastrando uma Arma!");
+                System.out.println("===============================");
+            
+                System.out.println("Digite a marca da arma (Ex: taurus, colt):");
+                marca = sc.nextLine(); 
+            
+                System.out.println("Digite em qual local a arma esta (Ex: segunda dp)");
+                local = sc.nextLine(); 
+            
+                System.out.println("Digite o estado da arma (novo, velho, com defeito)");
+                estadoPatrimonio = sc.nextLine();
 
-            System.out.println("Digite o modelo da arma (Ex: ak47, glock 16):");
-            modeloArma = sc.nextLine();
+                System.out.println("Digite o modelo da arma (Ex: ak47, glock 16):");
+                modeloArma = sc.nextLine();
 
-            System.out.println("Digite o numero de série da arma:");
-            nSerie = sc.nextInt();
+                do{
+                    System.out.println("Digite o numero de série da arma:");
+                    nSerie = sc.nextLine();
 
-            System.out.println("digite o calibre da arma:");
-            calibre = sc.nextDouble();
+                    try{
+                        
+                        if(arma.verificaNserie(nSerie)){
+                            nSerieValido = true;
 
-            arma = new Arma(nPatrimonio, estadoPatrimonio, marca, local, nSerie, modeloArma , calibre);
-        } 
-        
-        return arma;
+                        }
+
+                    }catch(IllegalArgumentException e){
+
+                        System.out.println();
+                        System.out.println("ERRO: " + e.getMessage());
+                        System.out.println();
+
+                    }
+                
+                }while(nSerieValido != true);
+                
+                System.out.println("digite o calibre da arma:");
+                calibre = sc.nextLine();
+
+                arma = new Arma(nPatrimonio, estadoPatrimonio, marca, local, nSerie, modeloArma , calibre);
+            } 
+            
+            return arma;
+
+        }catch(OutOfMemoryError e){
+
+            System.out.println("ERRO: " + e.getMessage());
+
+        }
+    
+        return null;
 
     }
+
     public Material material(){
         Scanner sc = new Scanner(System.in);
         Random  r = new Random();
@@ -66,35 +95,44 @@ public class Hook {
         
         Material material = new Material();
         
-        if(material.verificaQtdMaterial()){
+        try{
+            if(material.verificaQtdMaterial()){
+                
+                int nPatrimonio = r.nextInt(201) + 101;
+                
+                System.out.println("Você está cadastrando um Material!");
+                System.out.println("===============================");
+                
+                System.out.println("Digite a marca do material (Ex: geladeira eletrolux):");
+                marca = sc.nextLine(); 
+
+                System.out.println("Digite o local onde o material se encontra (Ex: segunda dp):");
+                local = sc.nextLine(); 
+
+                System.out.println("Digite o estado do Material(novo, velho, com defeito):");
+                estadoPatrimonio = sc.nextLine();
+
+                System.out.println("Digite a descrição do material (Ex: mesa de madeira, notebook):");
+                descricaoMaterial = sc.nextLine();
+
+                System.out.println("Digite o porte do material(pequeno, médio, grande):");
+                porte = sc.nextLine();
+
+                material = new Material(nPatrimonio, estadoPatrimonio, marca, local, descricaoMaterial, porte);
             
-            int nPatrimonio = r.nextInt(201) + 101;
-            
-            System.out.println("Você está cadastrando um Material!");
-            System.out.println("===============================");
-            
-            System.out.println("Digite a marca do material (Ex: geladeira eletrolux):");
-            marca = sc.nextLine(); 
-
-            System.out.println("Digite o local onde o material se encontra (Ex: segunda dp):");
-            local = sc.nextLine(); 
-
-            System.out.println("Digite o estado do Material(novo, velho, com defeito):");
-            estadoPatrimonio = sc.nextLine();
-
-            System.out.println("Digite a descrição do material (Ex: mesa de madeira, notebook):");
-            descricaoMaterial = sc.nextLine();
-
-            System.out.println("Digite o porte do material(pequeno, médio, grande):");
-            porte = sc.nextLine();
-
-            material = new Material(nPatrimonio, estadoPatrimonio, marca, local, descricaoMaterial, porte);
+                return material;
+            }
         
-            
+
+    
+        }catch(OutOfMemoryError e){
+
+            System.out.println("ERRO: " + e.getMessage());
+
         }
-       
-        return material;
-   
+        
+        return null;
+
     }
 
     public Veiculo veiculo(){
@@ -103,40 +141,50 @@ public class Hook {
         String marca, local, estadoPatrimonio, modeloVeiculo, corVeiculo, placaVeiculo;
         int aroVeiculo, nPatrimonio;
         Veiculo veiculo = new Veiculo();
+        
+        try{
+            if(veiculo.verificaQtdVeiculo()){
+                
+                nPatrimonio = r.nextInt(301) + 201;
+                
+                System.out.println("Você está cadastrando um Veiculo!");
+                System.out.println("===============================");
+                
+                System.out.println("Digite a marca do veiculo(Ex: renault, chevrolet):");
+                marca = sc.nextLine(); 
+
+                System.out.println("Digite o local onde o veiculo se encontra (Ex: segunda dp):");
+                local = sc.nextLine(); 
+
+                System.out.println("Digite o estado do veiculo (Ex: novo, velho, com defeito):");
+                estadoPatrimonio = sc.nextLine();
+                
+                System.out.println("Digite o modelo do veiculo(Ex: clio, astra, x6):");
+                modeloVeiculo = sc.nextLine();
+
+                System.out.println("Digite o aro do veiuclo(Ex: aro 16):");
+                aroVeiculo = sc.nextInt();
+                sc.nextLine(); // retirando o \n 
+
+                System.out.println("Digite a cor do veiculo:");
+                corVeiculo = sc.nextLine();
+
+                System.out.println("Digite a placa do veiculo:");
+                placaVeiculo = sc.nextLine();
+
+                veiculo = new Veiculo(nPatrimonio, estadoPatrimonio, marca, local, modeloVeiculo, aroVeiculo, corVeiculo, placaVeiculo);
+            }       
+
+            return veiculo;
+        
+        }catch(OutOfMemoryError e){
+
+            System.out.println("ERRO: " + e.getMessage());
+
+        }
        
-        if(veiculo.verificaQtdVeiculo()){
-            
-            nPatrimonio = r.nextInt(301) + 201;
-            
-            System.out.println("Você está cadastrando um Veiculo!");
-            System.out.println("===============================");
-            
-            System.out.println("Digite a marca do veiculo(Ex: renault, chevrolet):");
-            marca = sc.nextLine(); 
+        return null;
 
-            System.out.println("Digite o local onde o veiculo se encontra (Ex: segunda dp):");
-            local = sc.nextLine(); 
-
-            System.out.println("Digite o estado do veiculo (Ex: novo, velho, com defeito):");
-            estadoPatrimonio = sc.nextLine();
-            
-            System.out.println("Digite o modelo do veiculo(Ex: clio, astra, x6):");
-            modeloVeiculo = sc.nextLine();
-
-            System.out.println("Digite o aro do veiuclo(Ex: aro 16):");
-            aroVeiculo = sc.nextInt();
-            sc.nextLine(); // retirando o \n 
-
-            System.out.println("Digite a cor do veiculo:");
-            corVeiculo = sc.nextLine();
-
-            System.out.println("Digite a placa do veiculo:");
-            placaVeiculo = sc.nextLine();
-
-            veiculo = new Veiculo(nPatrimonio, estadoPatrimonio, marca, local, modeloVeiculo, aroVeiculo, corVeiculo, placaVeiculo);
-        }       
-
-        return veiculo;
     }
 
     public Colete colete(){
@@ -146,34 +194,44 @@ public class Hook {
         char tamanho;
         int nivelProtecao, nPatrimonio;
         Colete colete = new Colete();
+        
+        try{
+            if(colete.verificaQtdColete()){ 
+            nPatrimonio = r.nextInt(401) + 301;
 
-        if(colete.verificaQtdColete()){ 
-           nPatrimonio = r.nextInt(401) + 301;
+                System.out.println("Você está cadastrando um Colete!");
+                System.out.println("===============================");
+                
+                System.out.println("Digite a marca do colete (Ex: dupont):");
+                marca = sc.nextLine(); 
 
-            System.out.println("Você está cadastrando um Colete!");
-            System.out.println("===============================");
+                System.out.println("Digite o local onde o colete se encontra (Ex: segunda dp):");
+                local = sc.nextLine(); 
+
+                System.out.println("Digite o estado do colete(novo, velho, com defeito)");
+                estadoPatrimonio = sc.nextLine();
+
+                System.out.println("Digite o material que o colete é feito(Ex: kevlar):");
+                materialOrigem = sc.nextLine();
+
+                System.out.println("Digite tamanho do colete(Ex: m, g, p)");
+                tamanho = sc.next().charAt(0);
+
+                System.out.println("Digite nivel de proteção do colete(Ex: 1, 2, 3):");
+                nivelProtecao = sc.nextInt();
+
+                colete = new Colete(nPatrimonio, estadoPatrimonio, marca, local, tamanho, nivelProtecao, materialOrigem);
+            } 
             
-            System.out.println("Digite a marca do colete (Ex: dupont):");
-            marca = sc.nextLine(); 
+            return colete;
+        }
+        catch(OutOfMemoryError e){
 
-            System.out.println("Digite o local onde o colete se encontra (Ex: segunda dp):");
-            local = sc.nextLine(); 
+            System.out.println("ERRO: " + e.getMessage());
 
-            System.out.println("Digite o estado do colete(novo, velho, com defeito)");
-            estadoPatrimonio = sc.nextLine();
-
-            System.out.println("Digite o material que o colete é feito(Ex: kevlar):");
-            materialOrigem = sc.nextLine();
-
-            System.out.println("Digite tamanho do colete(Ex: m, g, p)");
-            tamanho = sc.next().charAt(0);
-
-            System.out.println("Digite nivel de proteção do colete(Ex: 1, 2, 3):");
-            nivelProtecao = sc.nextInt();
-
-            colete = new Colete(nPatrimonio, estadoPatrimonio, marca, local, tamanho, nivelProtecao, materialOrigem);
-        } 
-        return colete;
+        }
+       
+        return null;
     }
 
     public Arma alteraLocal(Arma arma){

@@ -22,9 +22,7 @@ public class Material extends Patrimonio{
     public boolean verificaQtdMaterial(){
 
         if(qtdMaterial >= 100){
-            System.out.println("Memoria cheia. Você não pode mais cadastrar materiais.");
-            
-            return false;
+            throw new OutOfMemoryError("Memoria cheia. Você não pode mais cadastrar materiais.");
 
         }else{
 

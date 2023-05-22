@@ -2,9 +2,9 @@ package beans;
 public class Arma extends Patrimonio{
     
     private int qtdArma; // quantas armas existem no bd
-    private int nSerie; //numero de série
+    private String nSerie; //numero de série
     private String modeloArma; //(glock 16, aks, ak47, parafal)
-    private double calibre; // calibre de munição usado
+    private String calibre; // calibre de munição usado
 
     public Arma(){
 
@@ -12,7 +12,7 @@ public class Arma extends Patrimonio{
 
     }
 
-    public Arma(int nPatrimonio, String estadoPatrimonio, String marca, String local, int nSerie, String modeloArma, double calibre){
+    public Arma(int nPatrimonio, String estadoPatrimonio, String marca, String local, String nSerie, String modeloArma, String calibre){
 
         super(nPatrimonio, estadoPatrimonio, marca, local);
         this.nSerie = nSerie;
@@ -25,9 +25,7 @@ public class Arma extends Patrimonio{
     public boolean verificaQtdArma(){
 
         if(qtdArma >= 100){
-            System.out.println("Memoria cheia. Você não pode mais cadastrar armas.");
-            
-            return false;
+            throw new OutOfMemoryError("Memoria cheia. Você não pode mais cadastrar armas.");
 
         }else{
 
@@ -37,9 +35,24 @@ public class Arma extends Patrimonio{
 
     }
     
+    public boolean verificaNserie(String nSerie){
+
+        if(nSerie.length() != 8){
+            
+            throw new IllegalArgumentException("O numero deve conter 8 caracteres ! você colocou: " + nSerie.length());
+
+        }else{
+
+            return true;
+
+        }
+
+    }
+
+
+
     
-    
-    public double getCalibre() {
+    public String getCalibre() {
         return calibre;
     }
    
@@ -47,7 +60,7 @@ public class Arma extends Patrimonio{
         return modeloArma;
     }
    
-    public int getnSerie() {
+    public String getnSerie() {
         return nSerie;
     }
 

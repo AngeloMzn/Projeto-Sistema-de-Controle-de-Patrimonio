@@ -156,9 +156,9 @@ public class Arquivo {
                         String estado = extrairValorCampo(linha, "Estado do patrimonio:");
                         String local = extrairValorCampo(linha, "Local do patrimonio:");
                         String marca = extrairValorCampo(linha, "Marca:");
-                        int numeroSerie = Integer.parseInt(extrairValorCampo(linha, "Numero de série:"));
+                        String numeroSerie = extrairValorCampo(linha, "Numero de série:");
                         String modelo = extrairValorCampo(linha, "Modelo:");
-                        double calibre = Double.parseDouble(extrairValorCampo(linha, "Calibre:"));
+                        String calibre = extrairValorCampo(linha, "Calibre:");
 
                         arma = new Arma(numero, estado, local, marca, numeroSerie, modelo, calibre);
 
