@@ -661,33 +661,32 @@ public class Arquivo {
 
             case 1:
             System.out.println();
-            System.out.println("<-------------------------------------------------------------------------->");
+            System.out.println("---Lista de armas---");
             listaArma();
-            System.out.println("<-------------------------------------------------------------------------->");
             System.out.println();
             break;
 
             case 2:
             System.out.println();
-            System.out.println("<-------------------------------------------------------------------------->");
+            System.out.println("---Lista de materiais---");
+            System.out.println();
             listaMaterial();
-            System.out.println("<-------------------------------------------------------------------------->");
             System.out.println();
             break;
 
             case 3:
             System.out.println();
-            System.out.println("<-------------------------------------------------------------------------->");
+            System.out.println("---Lista de coletes---");
+            System.out.println();
             listaColete();
-            System.out.println("<-------------------------------------------------------------------------->");
             System.out.println();
             break;
 
             case 4:
             System.out.println();
-            System.out.println("<-------------------------------------------------------------------------->");
+            System.out.println("---Lista de veiculos---");
+            System.out.println();
             listaVeiculo();
-            System.out.println("<-------------------------------------------------------------------------->");
             System.out.println();
             break;
 
