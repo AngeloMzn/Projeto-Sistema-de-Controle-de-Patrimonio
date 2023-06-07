@@ -1,5 +1,6 @@
 package main;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -696,8 +697,54 @@ public class Arquivo {
             System.out.println();
 
         }
-
-
     }
+        public static void excluirLinhaPorNumeroPatrimonio(String nomeArquivo, int numeroPatrimonio) {
+            String nomeArquivoTemp = "temp.txt";
+            File arquivoOriginal = new File(nomeArquivo);
+            File arquivoTemp = new File(nomeArquivoTemp);
+            try {
+                BufferedReader leitor = new BufferedReader(new FileReader(arquivoOriginal));
+                BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoTemp));
+                String linhaAtual;
+                while ((linhaAtual = leitor.readLine()) != null) {
+                    if (!linhaAtual.contains("Numero de patrimonio: " + numeroPatrimonio)) {
+                        escritor.write(linhaAtual);
+                        escritor.newLine();
+                    }
+                }
+                leitor.close();
+                escritor.close();
+                arquivoOriginal.delete();
+                arquivoTemp.renameTo(arquivoOriginal);
+                System.out.println("A linha com o número de patrimônio " + numeroPatrimonio + " foi excluída com sucesso.");
+            } catch (IOException e) {
+                System.out.println("Ocorreu um erro ao excluir a linha do arquivo: " + e.getMessage());
+            }
+        }
 
+        public void excluirPatrimonio(int escolha, int numeroPatrimonio){
+
+
+            switch(escolha){
+
+                case 1:
+                excluirLinhaPorNumeroPatrimonio("arma.txt", numeroPatrimonio);
+                break;
+                case 2:
+                excluirLinhaPorNumeroPatrimonio("material.txt", numeroPatrimonio);
+                break;
+                case 3:
+                excluirLinhaPorNumeroPatrimonio("colete.txt", numeroPatrimonio);
+                break;
+                case 4:
+                excluirLinhaPorNumeroPatrimonio("veiculo.txt", numeroPatrimonio);
+                break;
+                default:
+                System.out.println("Erro: Voce deve escolher entre 1 e 4 !");
+
+            }
+
+
+
+        }
 }

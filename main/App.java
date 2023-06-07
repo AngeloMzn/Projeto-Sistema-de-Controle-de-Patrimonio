@@ -63,6 +63,11 @@ public class App{
             m.menuTpPatrimonio();
             tpPatrimonio = r.nextInt();
 
+            System.out.println("Digite o numero de patrimonio do objeto a ser excluido:");
+            int numeroPatrimonio = r.nextInt();
+
+            arq.excluirPatrimonio(tpPatrimonio, numeroPatrimonio);
+
             
             break;
     
