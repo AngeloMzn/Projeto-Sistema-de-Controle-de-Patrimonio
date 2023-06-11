@@ -190,7 +190,7 @@ public class Hook {
 
                     }
             
-                }while(placaValida);
+                }while(placaValida != true);
 
                 veiculo = new Veiculo(nPatrimonio, estadoPatrimonio, marca, local, modeloVeiculo, aroVeiculo, corVeiculo, placaVeiculo);
             }       

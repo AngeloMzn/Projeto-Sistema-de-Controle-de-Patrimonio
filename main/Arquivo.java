@@ -21,7 +21,7 @@ public class Arquivo {
     public void cadastrar(Arma arma) {
 
         try {
-            // verifica se o objeto foi construido
+
             if (arma.getnPatrimonio() != 0) {
 
                 FileOutputStream arq = new FileOutputStream("arma.txt", true);
@@ -336,11 +336,11 @@ public class Arquivo {
 
     private static String extrairValorCampo(String linha, String nomeCampo) {
         int inicio = linha.indexOf(nomeCampo);
-        if (inicio != -1) { // Verifica se o nome do campo foi encontrado na linha
-            inicio += nomeCampo.length(); // Incrementa o índice para apontar para o próximo caractere após o nome do
-                                          // campo
+        if (inicio != -1) { 
+            inicio += nomeCampo.length(); 
+                                          
             int fim = linha.indexOf(";", inicio);
-            if (fim != -1) { // Verifica se o separador ';' foi encontrado após o valor do campo
+            if (fim != -1) { 
                 return linha.substring(inicio, fim).trim();
             } else {
                 System.out.println("Erro: Separador ';' não encontrado após o valor do campo '" + nomeCampo
@@ -349,7 +349,7 @@ public class Arquivo {
         } else {
             System.out.println("Erro: Campo '" + nomeCampo + "' não encontrado na linha: " + linha);
         }
-        return null; // Retorna null em caso de erro
+        return null;
     }
 
     public void alteraLocal(Arma arma) {
@@ -367,10 +367,7 @@ public class Arquivo {
 
             while ((line = reader.readLine()) != null) {
                 String[] tokens = line.split(";");
-
-                // Verifica se a linha corresponde ao objeto desejado
                 if (tokens.length >= 6 && tokens[0].trim().equals("Numero de patrimonio: " + arma.getnPatrimonio())) {
-                    // Atualiza o local do patrimônio
                     tokens[2] = " Local do patrimonio: " + arma.getLocal();
                     line = String.join("; ", tokens);
                 }
@@ -412,11 +409,8 @@ public class Arquivo {
 
             while ((line = reader.readLine()) != null) {
                 String[] tokens = line.split(";");
-
-                // Verifica se a linha corresponde ao objeto desejado
                 if (tokens.length >= 6
                         && tokens[0].trim().equals("Numero de patrimonio: " + veiculo.getnPatrimonio())) {
-                    // Atualiza o local do patrimônio
                     tokens[2] = " Local do patrimonio: " + veiculo.getLocal();
                     line = String.join("; ", tokens);
                 }
@@ -457,11 +451,8 @@ public class Arquivo {
 
             while ((line = reader.readLine()) != null) {
                 String[] tokens = line.split(";");
-
-                // Verifica se a linha corresponde ao objeto desejado
                 if (tokens.length >= 6
                         && tokens[0].trim().equals("Numero de patrimonio: " + material.getnPatrimonio())) {
-                    // Atualiza o local do patrimônio
                     tokens[2] = " Local do patrimonio: " + material.getLocal();
                     line = String.join("; ", tokens);
                 }
@@ -503,10 +494,7 @@ public class Arquivo {
 
             while ((line = reader.readLine()) != null) {
                 String[] tokens = line.split(";");
-
-                // Verifica se a linha corresponde ao objeto desejado
                 if (tokens.length >= 6 && tokens[0].trim().equals("Numero de patrimonio: " + colete.getnPatrimonio())) {
-                    // Atualiza o local do patrimônio
                     tokens[2] = " Local do patrimonio: " + colete.getLocal();
                     line = String.join("; ", tokens);
                 }

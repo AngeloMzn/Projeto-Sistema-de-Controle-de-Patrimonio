@@ -1,5 +1,5 @@
 package beans;
-public class Patrimonio{
+public abstract class Patrimonio{
   
   private int nPatrimonio; // numero gerado com random util java
   private String estadoPatrimonio; //(novo, velho, com defeito)
